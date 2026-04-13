@@ -1,0 +1,127 @@
+.currency-market {
+  background: #111827;
+  padding: 24px;
+  border-radius: 24px;
+  margin-top: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  color: #f8fafc;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.currency-market-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.currency-market-header h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.currency-market-header p {
+  margin: 6px 0 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  max-width: 640px;
+}
+
+.currency-refresh {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  color: #020617;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.currency-refresh:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 22px rgba(34, 197, 94, 0.3);
+}
+
+.currency-market-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.currency-market-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.currency-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.currency-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.currency-card-top strong {
+  display: block;
+  font-size: 18px;
+  color: #f8fafc;
+}
+
+.currency-card-top p {
+  margin: 4px 0 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.currency-rate {
+  font-size: 14px;
+  font-weight: 700;
+  color: #a7f3d0;
+}
+
+.currency-bar-track {
+  width: 100%;
+  height: 12px;
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.currency-bar-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  border-radius: 999px;
+}
+
+.currency-loading,
+.currency-error {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f8fafc;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .currency-market-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .currency-market-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

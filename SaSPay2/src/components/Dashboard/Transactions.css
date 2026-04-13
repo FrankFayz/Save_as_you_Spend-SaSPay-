@@ -1,0 +1,25 @@
+.transactions {
+  background: #0f172a;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  color: #f8fafc;
+}
+
+.transactions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-item {
+  background: #1e293b;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.transaction-item .time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
