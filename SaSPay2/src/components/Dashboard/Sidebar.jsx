@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiMenu, FiHome, FiCreditCard, FiPercent, FiBarChart2, FiList, FiSettings, FiLogOut } from "react-icons/fi";
 import "./MainDashboard.css";
 
 const Sidebar = ({ user, onLogout, onProfileClick, onNavigate, onPayClick }) => {
@@ -32,7 +33,7 @@ const Sidebar = ({ user, onLogout, onProfileClick, onNavigate, onPayClick }) => 
     <>
       {/* HAMBURGER */}
       <div className="hamburger" onClick={() => setOpen(!open)}>
-        ☰
+        <FiMenu className="hamburger-icon" />
       </div>
 
       {/* OVERLAY (for mobile) */}
@@ -60,52 +61,54 @@ const Sidebar = ({ user, onLogout, onProfileClick, onNavigate, onPayClick }) => 
 
           {/* MENU */}
           <ul className="menu">
-          <li onClick={() => handleNavigate("dashboard")}> 
-            <img src="https://img.icons8.com/fluency/24/dashboard-layout.png"/>
-            Dashboard
-          </li>
+            <li onClick={() => handleNavigate("dashboard")}>
+              <FiHome className="menu-icon" />
+              Dashboard
+            </li>
 
-          <li onClick={() => {
-            handleNavigate("dashboard");
-            if (onPayClick) onPayClick();
-          }}>
-            <img src="https://img.icons8.com/fluency/24/qr-code.png"/>
-            Pay Merchant
-          </li>
+            <li onClick={() => {
+              handleNavigate("dashboard");
+              if (onPayClick) onPayClick();
+            }}>
+              <FiCreditCard className="menu-icon" />
+              Pay Merchant
+            </li>
 
-          <li onClick={() => handleNavigate("savings")}> 
-            <img src="https://img.icons8.com/fluency/24/wallet.png"/>
-            Savings Wallet
-          </li>
+            <li onClick={() => handleNavigate("wallet")}>
+              <FiPercent className="menu-icon" />
+              Savings Wallet
+            </li>
 
-          <li onClick={() => handleNavigate("insights")}> 
-            <img src="https://img.icons8.com/fluency/24/combo-chart.png"/>
-            Insights
-          </li>
+            <li onClick={() => handleNavigate("insights")}>
+              <FiBarChart2 className="menu-icon" />
+              Insights
+            </li>
 
-          <li onClick={() => handleNavigate("transactions")}> 
-            <img src="https://img.icons8.com/fluency/24/list.png"/>
-            Recent Transactions
-          </li>
+            <li onClick={() => handleNavigate("transactions")}>
+              <FiList className="menu-icon" />
+              Recent Transactions
+            </li>
 
-          <li>
-            <img src="https://img.icons8.com/fluency/24/settings.png"/>
-            Settings
-          </li>
-        </ul>
+            <li>
+              <FiSettings className="menu-icon" />
+              Settings
+            </li>
+          </ul>
 
-          <button className="sidebar-action-btn" onClick={() => handleNavigate("savings")}>Savings Wallet</button>
+          <button className="sidebar-action-btn" onClick={() => handleNavigate("wallet")}>Savings Wallet</button>
         </div>
 
         <div className="sidebar-footer">
           {/* SASPAY FEATURE CARD */}
           <div className="sidebar-saspay">
-            <h4>💡 Auto Saving</h4>
+            <h4>Auto Saving</h4>
             <p>You're saving {savingPercent}% on every payment</p>
           </div>
 
           {/* LOGOUT */}
-          <button className="logout-btn" onClick={onLogout}>Logout</button>
+          <button className="logout-btn" onClick={onLogout}>
+            <FiLogOut className="logout-icon" /> Logout
+          </button>
         </div>
       </div>
     </>

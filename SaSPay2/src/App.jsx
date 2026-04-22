@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import Landing from "./components/Landing/Landing";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import UserProfile from "./components/Auth/UserProfile";
 import Dashboard from "./components/Dashboard/MainDashboard";
 
 const App = () => {
-  const [page, setPage] = useState("login");
+  const [page, setPage] = useState("landing"); // Start with landing page
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [currentView, setCurrentView] = useState("dashboard");
@@ -27,7 +28,7 @@ const App = () => {
       setUser(null);
       setIsLoggedIn(false);
       setCurrentView("dashboard");
-      setPage("login");
+      setPage("landing");
     }
   };
 
@@ -53,11 +54,20 @@ const App = () => {
 
   return (
     <>
-      {page === "signup" ? (
-        <Signup goToLogin={() => setPage("login")} />
+      {page === "landing" ? (
+        <Landing
+          goToLogin={() => setPage("login")}
+          goToSignup={() => setPage("signup")}
+        />
+      ) : page === "signup" ? (
+        <Signup 
+          goToLogin={() => setPage("login")}
+          goToLanding={() => setPage("landing")}
+        />
       ) : (
         <Login
           goToSignup={() => setPage("signup")}
+          goToLanding={() => setPage("landing")}
           onLoginSuccess={handleLoginSuccess}
         />
       )}

@@ -1,11 +1,13 @@
 .goal-tracker {
-  background: linear-gradient(180deg, #0f172a, #111827);
-  padding: 24px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.04));
+  padding: 28px;
   border-radius: 24px;
-  margin-top: 16px;
-  color: #f8fafc;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  margin-top: 20px;
+  color: #f0fdf4;
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .goal-tracker-top {
@@ -26,46 +28,53 @@
 }
 
 .goal-summary-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.03));
   padding: 20px;
   border-radius: 18px;
-  border: 1px solid rgba(148, 163, 184, 0.14);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 .goal-summary-card span {
   display: block;
-  color: #94a3b8;
+  color: #a7f3d0;
   font-size: 13px;
   margin-bottom: 8px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .goal-summary-card strong {
   display: block;
   font-size: 28px;
-  color: #f8fafc;
+  color: #22c55e;
+  font-weight: 950;
+  letter-spacing: -1px;
 }
 
 .goal-note {
   margin-bottom: 20px;
-  color: #cbd5e1;
+  color: #a7f3d0;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .goal-subtitle {
   margin: 6px 0 0;
   font-size: 13px;
-  color: #94a3b8;
+  color: #a7f3d0;
+  font-weight: 600;
 }
 
 .goal-rate {
-  background: rgba(16, 185, 129, 0.12);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.06));
   padding: 10px 16px;
   border-radius: 14px;
   color: #d1fae5;
   font-weight: 700;
   white-space: nowrap;
+  border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 .goal-form {
@@ -79,22 +88,34 @@
   width: 100%;
   padding: 14px 16px;
   border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  background: rgba(15, 23, 42, 0.92);
-  color: #f8fafc;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.03));
+  color: #f0fdf4;
   font-size: 14px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .goal-form input::placeholder {
-  color: #94a3b8;
+  color: #6ee7b7;
+  font-weight: 600;
+}
+
+.goal-form input:focus {
+  outline: none;
+  border-color: rgba(34, 197, 94, 0.5);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.06));
 }
 
 .goal-form label {
   display: block;
   margin-bottom: 8px;
-  color: #cbd5e1;
+  color: #a7f3d0;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .goal-form-actions {
@@ -109,19 +130,19 @@
   width: 100%;
   padding: 14px 18px;
   border-radius: 16px;
-  border: none;
-  background: linear-gradient(135deg, #10b981, #22c55e);
-  color: #020617;
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #0f172a;
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 18px 30px rgba(16, 185, 129, 0.22);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .goal-form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 22px 38px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .goal-form-note {
@@ -248,21 +269,340 @@
   font-size: 14px;
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .goal-tracker {
+    padding: 22px;
+  }
+
+  .goal-tracker-top h3 {
+    font-size: 20px;
+  }
+
+  .goal-summary-card strong {
+    font-size: 24px;
+  }
+
   .goal-form {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .goal-form input {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .goal-form-actions {
+    grid-column: span 1;
+  }
+
+  .goal-form button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .goal-progress-header h4 {
+    font-size: 18px;
+  }
+
+  .goal-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .progress-bar {
+    height: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .goal-tracker {
+    padding: 18px;
+    margin-top: 16px;
+    border-radius: 18px;
   }
 
   .goal-tracker-top {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
+  }
+
+  .goal-tracker-top h3 {
+    font-size: 18px;
+  }
+
+  .goal-summary-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .goal-summary-card span {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .goal-summary-card strong {
+    font-size: 20px;
+  }
+
+  .goal-note {
+    font-size: 12px;
+    margin-bottom: 16px;
   }
 
   .goal-rate {
     width: fit-content;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .goal-subtitle {
+    font-size: 12px;
+  }
+
+  .goal-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .goal-form input {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .goal-form label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .goal-form-actions {
+    grid-column: span 1;
+    gap: 8px;
+  }
+
+  .goal-form button {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .goal-form-note {
+    font-size: 12px;
+  }
+
+  .goal-form-message {
+    font-size: 12px;
+  }
+
+  .goal-progress {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .goal-progress-header {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .goal-progress-header h4 {
+    font-size: 16px;
+  }
+
+  .goal-progress-header p {
+    font-size: 12px;
+  }
+
+  .goal-progress-percent {
+    font-size: 16px;
+  }
+
+  .progress-bar {
+    height: 14px;
+    margin-bottom: 12px;
   }
 
   .goal-stats {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .goal-stats div {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .goal-stats span {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .goal-stats strong {
+    font-size: 14px;
+  }
+
+  .goal-estimate {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .goal-chart-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .goal-chart-card h4 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .chart-placeholder {
+    padding: 30px 0;
+    font-size: 12px;
+  }
+
+  .goal-empty {
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-tracker {
+    padding: 14px;
+    margin-top: 12px;
+  }
+
+  .goal-tracker-top h3 {
+    font-size: 16px;
+  }
+
+  .goal-summary-card {
+    padding: 12px;
+  }
+
+  .goal-summary-card span {
+    font-size: 10px;
+  }
+
+  .goal-summary-card strong {
+    font-size: 18px;
+  }
+
+  .goal-note {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .goal-rate {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+
+  .goal-subtitle {
+    font-size: 11px;
+  }
+
+  .goal-form {
+    gap: 10px;
+  }
+
+  .goal-form input {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .goal-form label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .goal-form button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .goal-form-note {
+    font-size: 11px;
+  }
+
+  .goal-progress {
+    padding: 14px;
+  }
+
+  .goal-progress-header h4 {
+    font-size: 14px;
+  }
+
+  .goal-progress-percent {
+    font-size: 14px;
+  }
+
+  .progress-bar {
+    height: 12px;
+    margin-bottom: 10px;
+  }
+
+  .goal-stats {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .goal-stats div {
+    padding: 10px;
+  }
+
+  .goal-stats span {
+    font-size: 10px;
+  }
+
+  .goal-stats strong {
+    font-size: 13px;
+  }
+
+  .goal-estimate {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .goal-chart-card {
+    padding: 12px;
+  }
+
+  .goal-chart-card h4 {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .chart-placeholder {
+    padding: 24px 0;
+    font-size: 11px;
+  }
+
+  .goal-empty {
+    padding: 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .goal-tracker {
+    padding: 12px;
+  }
+
+  .goal-summary-card strong {
+    font-size: 16px;
+  }
+
+  .goal-form button {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .goal-progress-header h4 {
+    font-size: 13px;
   }
 }

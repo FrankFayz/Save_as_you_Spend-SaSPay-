@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { FiArrowLeft } from "react-icons/fi";
 import "./Auth.css";
 import CountrySelect from "./CountrySelect";
 import logo from "../../assets/logo.png";
 
-const Signup = ({ goToLogin }) => {
+const Signup = ({ goToLogin, goToLanding }) => {
   const [username, setUsername] = useState("");
   const [countryCode, setCountryCode] = useState("+256");
   const [phone, setPhone] = useState("");
@@ -83,6 +84,11 @@ const Signup = ({ goToLogin }) => {
 
   return (
     <div className="auth-container">
+      {goToLanding && (
+        <button className="back-to-home" onClick={goToLanding}>
+          <FiArrowLeft /> Back to Home
+        </button>
+      )}
       <div className="auth-card">
 
         {/* LOGO */}

@@ -24,9 +24,24 @@ def home(request):
     return JsonResponse({"message": "SaSPay API is running"})
 
 
+def api_test(request):
+    return JsonResponse({
+        "status": "OK",
+        "message": "API connection successful",
+        "api_endpoints": {
+            "wallet_create": "/api/accounts/wallet/create/",
+            "wallet_get": "/api/accounts/wallet/get/",
+            "wallet_deposit": "/api/accounts/wallet/deposit/",
+            "wallet_withdraw": "/api/accounts/wallet/withdraw/",
+            "wallet_transactions": "/api/accounts/wallet/transactions/"
+        }
+    })
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
+    path('api/test/', api_test),
     path('accounts/', include('accounts.urls')),
     path("api/", include("accounts.urls")),
 ]

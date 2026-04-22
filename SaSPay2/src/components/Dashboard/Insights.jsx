@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiDollarSign, FiTarget, FiBarChart2, FiZap } from "react-icons/fi";
 import "./Insights.css";
 
 const Insights = () => {
@@ -67,7 +68,7 @@ const Insights = () => {
       {/* KPI CARDS */}
       <div className="insights-kpi">
         <div className="kpi-card total-spent">
-          <div className="kpi-icon">💰</div>
+          <div className="kpi-icon"><FiDollarSign /></div>
           <div className="kpi-content">
             <p className="kpi-label">Total Spent</p>
             <h3 className="kpi-value">KES {totalSpent.toLocaleString()}</h3>
@@ -76,7 +77,7 @@ const Insights = () => {
         </div>
 
         <div className="kpi-card amount-saved">
-          <div className="kpi-icon">🎯</div>
+          <div className="kpi-icon"><FiTarget /></div>
           <div className="kpi-content">
             <p className="kpi-label">Automatically Saved</p>
             <h3 className="kpi-value">KES {savingsAmount.toLocaleString()}</h3>
@@ -85,7 +86,7 @@ const Insights = () => {
         </div>
 
         <div className="kpi-card spending-rate">
-          <div className="kpi-icon">📊</div>
+          <div className="kpi-icon"><FiBarChart2 /></div>
           <div className="kpi-content">
             <p className="kpi-label">Top Category</p>
             <h3 className="kpi-value">{topCategory.category}</h3>
@@ -94,7 +95,7 @@ const Insights = () => {
         </div>
 
         <div className="kpi-card efficiency">
-          <div className="kpi-icon">⚡</div>
+          <div className="kpi-icon"><FiZap /></div>
           <div className="kpi-content">
             <p className="kpi-label">Efficiency Score</p>
             <h3 className="kpi-value">A+</h3>
@@ -159,9 +160,9 @@ const Insights = () => {
 
       {/* RECOMMENDATIONS */}
       <div className="insights-recommendations">
-        <h3>💡 Smart Recommendations</h3>
+        <h3>Smart Recommendations</h3>
         <ul>
-          <li>You're saving {savingsPercentage}% per transaction - keep it up! 🎉</li>
+          <li>You're saving {savingsPercentage}% per transaction — keep it up!</li>
           <li>Your biggest expense category is {topCategory.category || "uncategorized"}</li>
           <li>Consider setting a goal to reduce spending in this category by 10%</li>
           <li>You've been consistent - maintain this excellent discipline</li>

@@ -10,11 +10,13 @@ import Insights from "./Insights";
 import GoalTracker from "./GoalTracker";
 import Sidebar from "./Sidebar";
 import PaymentModal from "./PaymentModal";
+import SavingsWallet from "./SavingsWallet";
 
 const MainDashboard = ({ user, onLogout, onProfileClick }) => {
   const [showModal, setShowModal] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [currentView, setCurrentView] = useState("dashboard");
+  const [walletRefreshTrigger, setWalletRefreshTrigger] = useState(0);
   const savingsRef = useRef(null);
 
   const handleNavigate = (section) => {
@@ -33,15 +35,27 @@ const MainDashboard = ({ user, onLogout, onProfileClick }) => {
       return;
     }
 
-    setCurrentView("dashboard");
+    if (section === "wallet") {
+      setCurrentView("wallet");
+      return;
+    }
 
     if (section === "savings" && savingsRef.current) {
-      savingsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      setCurrentView("dashboard");
+      setTimeout(() => {
+        savingsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+      return;
     }
   };
 
   const handleNewTransaction = (transaction) => {
     setTransactions([transaction, ...transactions]);
+  };
+
+  const handlePaymentSuccess = () => {
+    // Trigger wallet refresh after successful payment
+    setWalletRefreshTrigger(prev => prev + 1);
   };
 
   return (
@@ -74,12 +88,17 @@ const MainDashboard = ({ user, onLogout, onProfileClick }) => {
               <button className="back-button" onClick={() => setCurrentView("dashboard")}>← Back to Dashboard</button>
               <h3>Recent Transactions</h3>
             </div>
-            <Transactions transactions={transactions} />
+            <Transactions transactions={transactions} user={user} refreshTrigger={walletRefreshTrigger} />
           </div>
         ) : currentView === "insights" ? (
           <div className="insights-page">
             <button className="back-button" onClick={() => setCurrentView("dashboard")}>← Back to Dashboard</button>
             <Insights />
+          </div>
+        ) : currentView === "wallet" ? (
+          <div className="wallet-page">
+            <button className="back-button" onClick={() => setCurrentView("dashboard")}>← Back to Dashboard</button>
+            <SavingsWallet user={user} refreshTrigger={walletRefreshTrigger} />
           </div>
         ) : null}
       </div>
@@ -88,6 +107,8 @@ const MainDashboard = ({ user, onLogout, onProfileClick }) => {
         <PaymentModal
           closeModal={() => setShowModal(false)}
           addTransaction={handleNewTransaction}
+          user={user}
+          onPaymentSuccess={handlePaymentSuccess}
         />
       )}
     </div>

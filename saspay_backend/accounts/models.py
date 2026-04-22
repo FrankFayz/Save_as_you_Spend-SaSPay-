@@ -47,3 +47,37 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+# STELLAR WALLET MODEL
+class StellarWallet(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wallet')
+    public_key = models.CharField(max_length=255, unique=True)  # Stellar public key
+    secret_key = models.TextField()  # Encrypted Stellar secret key
+    xlm_balance = models.DecimalField(max_digits=20, decimal_places=8, default=0)  # Balance in XLM
+    ugx_balance = models.DecimalField(max_digits=15, decimal_places=2, default=0)  # Balance in UGX (for display)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Wallet for {self.user.username}"
+
+
+# WALLET TRANSACTION MODEL (for tracking history)
+class WalletTransaction(models.Model):
+    TRANSACTION_TYPE = (
+        ('deposit', 'Deposit'),
+        ('withdraw', 'Withdrawal'),
+        ('savings', 'Auto Savings'),
+    )
+    
+    wallet = models.ForeignKey(StellarWallet, on_delete=models.CASCADE, related_name='transactions')
+    transaction_type = models.CharField(max_length=20, choices=TRANSACTION_TYPE)
+    amount_ugx = models.DecimalField(max_digits=15, decimal_places=2)  # Amount in UGX
+    amount_xlm = models.DecimalField(max_digits=20, decimal_places=8)  # Amount in XLM
+    stellar_tx_hash = models.CharField(max_length=255, blank=True, null=True)  # Stellar transaction hash
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.transaction_type} - {self.amount_ugx} UGX"

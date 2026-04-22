@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiClipboard, FiTrendingUp, FiCheck, FiX } from "react-icons/fi";
 import { PieChart, Pie, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const SavingsCard = ({ transactions }) => {
@@ -71,11 +72,7 @@ const SavingsCard = ({ transactions }) => {
       <div className="savings-settings">
         <div className="settings-header">
           <div className="settings-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7" />
-              <path d="M3 7h18" />
-              <path d="M16 3h-2a2 2 0 0 0-4 0H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z" />
-            </svg>
+            <FiClipboard className="settings-icon" />
           </div>
           <div className="settings-title">
             <h3>Auto Savings Settings</h3>
@@ -91,7 +88,7 @@ const SavingsCard = ({ transactions }) => {
             </div>
 
             <div className="monthly-projection">
-              <div className="projection-icon">📈</div>
+              <div className="projection-icon"><FiTrendingUp /></div>
               <div className="projection-details">
                 <div className="projection-label">Estimated Monthly Savings</div>
                 <div className="projection-amount">UGX {monthlyProjection.toLocaleString()}</div>
@@ -100,7 +97,7 @@ const SavingsCard = ({ transactions }) => {
             </div>
 
             <button className="edit-settings-btn" onClick={() => setIsEditing(true)}>
-              ✎ Change Percentage
+              Change Percentage
             </button>
           </div>
         ) : (
