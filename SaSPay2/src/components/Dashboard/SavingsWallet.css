@@ -645,6 +645,8 @@
     font-size: 10px;
   }
 }
+
+.card-equivalent {
   font-size: 0.85rem;
   padding-top: 12px;
   border-top: 1px solid #334155;
